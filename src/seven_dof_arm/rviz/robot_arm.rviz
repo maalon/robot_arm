@@ -1,0 +1,105 @@
+Panels:
+  - Class: rviz/Displays
+    Help Height: 100
+    Name: Displays
+    Property Tree Widget:
+      Expanded:
+        - /Global Options
+        - /Global Options/Fixed Frame
+      Splitter Ratio: 0.5
+    Tree Height: 300
+  - Class: rviz/Tool Properties
+    Expanded:
+      - /Tools
+    Splitter Ratio: 0.5
+  - Class: rviz/Views
+    Expanded:
+      - /Current View
+      - /Views
+      - /Views/Orbit
+    Name: Views
+    Splitter Ratio: 0.5
+  - Class: rviz/Time
+    Name: Time
+
+Visualization Manager:
+  Class: ""
+  Displays:
+    - Alpha: 1
+      Cell Size: 0.1
+      Class: rviz/Grid
+      Color: 160; 160; 164
+      Enabled: true
+      Line Style:
+        Color: 255; 255; 255
+        Style: Lines
+        Width: 0.03
+      Name: Grid
+      Normal Cell Count: 0
+      Offset:
+        X: 0
+        Y: 0
+        Z: 0
+      Plane: XY
+      Plane Cell Count: 10
+      Reference Frame: <Fixed Frame>
+      Value: 0
+    - Alpha: 1
+      Class: rviz/RobotModel
+      Collision Enabled: false
+      Enabled: true
+      Highlights:
+        Alpha: 0.5
+        Color: 255; 255; 0
+        Radius: 0.05
+        Type: Sphere
+      Name: Robot Model
+      Robot Description: robot_description
+      TF Prefix: ""
+      Update Rate: 0
+      Visual Enabled: true
+    - Class: rviz/TF
+      Enabled: true
+      Frame Timeout: 10
+      Marker Scale: 1
+      Name: TF
+      Show Axes: true
+  Enabled: true
+  Global Options:
+    Background Color: 48; 48; 48
+    Fixed Frame: base_link
+  Name: root
+  Tools:
+    - Class: rviz/Interact
+    - Class: rviz/MoveCamera
+    - Class: rviz/Select
+    - Class: rviz/FocusCamera
+    - Class: rviz/Measure
+  Views:
+    Current:
+      Class: rviz/Orbit
+      Distance: 5
+      Focal Point:
+        X: 0
+        Y: 0
+        Z: 0
+      Name: Current View
+      Pitch: 0.785
+      Roll: 0
+      Yaw: 0
+    Orbit:
+      Class: rviz/Orbit
+      Distance: 5
+      Focal Point:
+        X: 0
+        Y: 0
+        Z: 0
+      Name: Orbit
+      Pitch: 0.785
+      Roll: 0
+      Yaw: 0
+  Window Geometry:
+    Height: 720
+    Width: 1280
+    X: 0
+    Y: 0

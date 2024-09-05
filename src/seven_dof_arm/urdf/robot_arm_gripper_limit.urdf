@@ -1,0 +1,765 @@
+<?xml version="1.0"?>
+<robot name="seven_dof_arm" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <link name="world" type="fixed"/>
+    <joint name="fixed" type="fixed">
+    <parent link="world"/>
+    <child link="base_link"/>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <!-- <xacro:insert_block name = "dorna_base_origin"/> -->
+  </joint>
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="0.0317735815793905 0.166642593017249 -0.035235787414242"
+        rpy="0 0 0" />
+      <mass
+        value="0.685757374248979" />
+      <inertia
+        ixx="0.00345745077407554"
+        ixy="3.07155155477206E-09"
+        ixz="1.91791459626495E-10"
+        iyy="0.000247108413615161"
+        iyz="-4.08545352657761E-09"
+        izz="0.00347115270404034" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://seven_dof_arm/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://seven_dof_arm/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <link
+    name="Link1">
+    <inertial>
+      <origin
+        xyz="0.0916699630460542 -0.0442131896758257 -0.0675145782975689"
+        rpy="0 0 0" />
+      <mass
+        value="0.435483637108004" />
+      <inertia
+        ixx="0.00055486116019056"
+        ixy="-1.69557458853626E-06"
+        ixz="1.10984979186947E-06"
+        iyy="0.000673341919357431"
+        iyz="5.78646066757352E-05"
+        izz="0.000786642436673375" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://seven_dof_arm/meshes/Link1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://seven_dof_arm/meshes/Link1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="Link1">
+    <kp>100</kp>
+    <kd>1</kd>
+    <mu1>0.1</mu1>
+    <mu2>0.1</mu2>
+    <maxVel>0</maxVel>
+    <minDepth>0.001</minDepth>
+    <torsional>
+      <ode>
+        <coefficent>1000</coefficent>
+        <slip>0</slip>
+      </ode>
+    </torsional>
+  </gazebo>
+  <joint
+    name="joint1"
+    type="prismatic">
+    <origin
+      xyz="0.079186 -0.036824 0.4563"
+      rpy="3.1416 0 1.5708" />
+    <parent
+      link="base_link" />
+    <child
+      link="Link1" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="0"
+      upper="0.3"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="Link2">
+    <inertial>
+      <origin
+        xyz="-0.0362242257746982 0.00610793662936295 -4.5353654753777E-05"
+        rpy="0 0 0" />
+      <mass
+        value="0.0692232619946468" />
+      <inertia
+        ixx="2.30301654770883E-05"
+        ixy="-3.32021307583526E-12"
+        ixz="9.55728406826345E-12"
+        iyy="1.60035358829875E-05"
+        iyz="3.10360859630108E-08"
+        izz="1.67020019173867E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://seven_dof_arm/meshes/Link2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://seven_dof_arm/meshes/Link2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="Link2">
+    <kp>100</kp>
+    <kd>1</kd>
+    <mu1>0.1</mu1>
+    <mu2>0.1</mu2>
+    <maxVel>0</maxVel>
+    <minDepth>0.001</minDepth>
+    <torsional>
+      <ode>
+        <coefficent>1000</coefficent>
+        <slip>0</slip>
+      </ode>
+    </torsional>
+  </gazebo>
+  <joint
+    name="joint2"
+    type="revolute">
+    <origin
+      xyz="0 -0.0083 -0.067713"
+      rpy="-0.0070619 0 1.5708" />
+    <parent
+      link="Link1" />
+    <child
+      link="Link2" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      lower="-1.5"
+      upper="0.15"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="Link3">
+    <inertial>
+      <origin
+        xyz="-0.0399745519133712 0.0558310805168143 -0.0316989413542668"
+        rpy="0 0 0" />
+      <mass
+        value="0.256407451082195" />
+      <inertia
+        ixx="0.000181490660126937"
+        ixy="1.7331515868754E-06"
+        ixz="1.25188642393082E-05"
+        iyy="0.000203552436340242"
+        iyz="-1.76484174404526E-06"
+        izz="0.000178856893048134" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://seven_dof_arm/meshes/Link3.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://seven_dof_arm/meshes/Link3.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="Link3">
+    <kp>100</kp>
+    <kd>1</kd>
+    <mu1>0.1</mu1>
+    <mu2>0.1</mu2>
+    <maxVel>0</maxVel>
+    <minDepth>0.001</minDepth>
+    <torsional>
+      <ode>
+        <coefficent>1000</coefficent>
+        <slip>0</slip>
+      </ode>
+    </torsional>
+  </gazebo>
+  <joint
+    name="joint3"
+    type="revolute">
+    <origin
+      xyz="0 0.01 0"
+      rpy="0 0.78602 0" />
+    <parent
+      link="Link2" />
+    <child
+      link="Link3" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-1.5"
+      upper="1.5"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="Link4">
+    <inertial>
+      <origin
+        xyz="-0.109016179296857 -0.00125414996636077 -3.82551769230327E-05"
+        rpy="0 0 0" />
+      <mass
+        value="0.307213644543192" />
+      <inertia
+        ixx="0.000100181559494598"
+        ixy="1.4801671961557E-08"
+        ixz="-2.69300229846964E-07"
+        iyy="0.000601480975551127"
+        iyz="2.36788719461813E-10"
+        izz="0.000556821791320743" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://seven_dof_arm/meshes/Link4.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://seven_dof_arm/meshes/Link4.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="Link4">
+    <kp>100</kp>
+    <kd>1</kd>
+    <mu1>0.1</mu1>
+    <mu2>0.1</mu2>
+    <maxVel>0</maxVel>
+    <minDepth>0.001</minDepth>
+    <torsional>
+      <ode>
+        <coefficent>1000</coefficent>
+        <slip>0</slip>
+      </ode>
+    </torsional>
+  </gazebo>
+  <joint
+    name="joint4"
+    type="revolute">
+    <origin
+      xyz="-0.025598 0.060574 -0.02563"
+      rpy="-3.1416 0.78477 0" />
+    <parent
+      link="Link3" />
+    <child
+      link="Link4" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      lower="-1.5"
+      upper="1.5"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="Link5">
+    <inertial>
+      <origin
+        xyz="-4.03053779962151E-05 0.00226785503086654 0.000188099816106957"
+        rpy="0 0 0" />
+      <mass
+        value="0.0783880463610159" />
+      <inertia
+        ixx="1.98092122009333E-05"
+        ixy="-4.85880932082386E-09"
+        ixz="8.53128675466766E-09"
+        iyy="1.68289094477428E-05"
+        iyz="3.70335541134835E-07"
+        izz="2.75893747032841E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://seven_dof_arm/meshes/Link5.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://seven_dof_arm/meshes/Link5.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="Link5">
+    <kp>100</kp>
+    <kd>1</kd>
+    <mu1>0.1</mu1>
+    <mu2>0.1</mu2>
+    <maxVel>0</maxVel>
+    <minDepth>0.001</minDepth>
+    <torsional>
+      <ode>
+        <coefficent>1000</coefficent>
+        <slip>0</slip>
+      </ode>
+    </torsional>
+  </gazebo>
+  <joint
+    name="join5"
+    type="revolute">
+    <origin
+      xyz="-0.24155 0 0"
+      rpy="3.1416 1.5708 0" />
+    <parent
+      link="Link4" />
+    <child
+      link="Link5" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="0"
+      upper="2.094"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="Link6">
+    <inertial>
+      <origin
+        xyz="-5.00848839944529E-05 8.17726245663924E-05 0.0907551221577791"
+        rpy="0 0 0" />
+      <mass
+        value="0.2542827086826" />
+      <inertia
+        ixx="0.000360079481170321"
+        ixy="1.03149076873174E-08"
+        ixz="-9.44915201772661E-08"
+        iyy="0.000366765636267165"
+        iyz="8.73675644228796E-08"
+        izz="9.00853421805243E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://seven_dof_arm/meshes/Link6.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://seven_dof_arm/meshes/Link6.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="Link6">
+    <kp>100</kp>
+    <kd>1</kd>
+    <mu1>0.1</mu1>
+    <mu2>0.1</mu2>
+    <maxVel>0</maxVel>
+    <minDepth>0.001</minDepth>
+    <torsional>
+      <ode>
+        <coefficent>1000</coefficent>
+        <slip>0</slip>
+      </ode>
+    </torsional>
+  </gazebo>
+  <joint
+    name="joint6"
+    type="revolute">
+    <origin
+      xyz="0 0 0.023604"
+      rpy="0 0 -1.5708" />
+    <parent
+      link="Link5" />
+    <child
+      link="Link6" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="0"
+      upper="6.28"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <!-- link7 added -->
+  <!-- <link
+    name="link7">
+    <inertial>
+      <origin
+        xyz="0.00031222685375841 -0.000327180590844703 0.0210790419598621"
+        rpy="0 0 0" />
+      <mass
+        value="0.0531058037510222" />
+      <inertia
+        ixx="1.87781255142653E-05"
+        ixy="-2.13672586806955E-06"
+        ixz="1.09897769756693E-07"
+        iyy="2.87631837946065E-05"
+        iyz="-6.51839344046795E-08"
+        izz="4.1335700567351E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://seven_dof_arm/meshes2/link7.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://seven_dof_arm/meshes2/link7.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="Link7">
+    <kp>100</kp>
+    <kd>1</kd>
+    <mu1>0.1</mu1>
+    <mu2>0.1</mu2>
+    <maxVel>0</maxVel>
+    <minDepth>0.001</minDepth>
+    <torsional>
+      <ode>
+        <coefficent>1000</coefficent>
+        <slip>0</slip>
+      </ode>
+    </torsional>
+  </gazebo>
+  <joint
+    name="joint7"
+    type="fixed">
+    <origin
+      xyz="0 0 0.14004"
+      rpy="0 0 2.9385" />
+    <parent
+      link="link6" />
+    <child
+      link="link7" />
+    <axis
+      xyz="0 0 1" />
+  </joint> -->
+
+
+  <link
+    name="Linkf1">
+    <inertial>
+      <origin
+        xyz="-0.0154418195734002 -0.0350436191457829 -0.00592283358925962"
+        rpy="0 0 0" />
+      <mass
+        value="0.0125868643518797" />
+      <inertia
+        ixx="1.34045244072917E-06"
+        ixy="1.39789235308191E-07"
+        ixz="-5.22211204327983E-08"
+        iyy="1.12767249075911E-06"
+        iyz="-1.81924089482309E-08"
+        izz="2.01915556442829E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://seven_dof_arm/meshes/Linkf1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://seven_dof_arm/meshes/Linkf1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="Linkf1">
+    <kp>100</kp>
+    <kd>1</kd>
+    <mu1>0.1</mu1>
+    <mu2>0.1</mu2>
+    <maxVel>0</maxVel>
+    <minDepth>0.001</minDepth>
+    <torsional>
+      <ode>
+        <coefficent>1000</coefficent>
+        <slip>0</slip>
+      </ode>
+    </torsional>
+  </gazebo>
+  <joint
+    name="joinf1"
+    type="prismatic">
+    <origin
+      xyz="0 0.0092015 0.16431"
+      rpy="-1.5886 -0.19632 0.0034715" />
+    <parent
+      link="Link6" />
+    <child
+      link="Linkf1" />
+    <axis
+      xyz="0.98079 0.19509 0" />
+    <limit
+      lower="0.01"
+      upper="0.023"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="Linkf2">
+    <inertial>
+      <origin
+        xyz="-0.0145299887455889 -0.0348622446550819 0.013077166404756"
+        rpy="0 0 0" />
+      <mass
+        value="0.0125868643006155" />
+      <inertia
+        ixx="1.34045242046199E-06"
+        ixy="1.39789230012992E-07"
+        ixz="-5.22211190217902E-08"
+        iyy="1.1276724867428E-06"
+        iyz="-1.81924050330661E-08"
+        izz="2.01915554315492E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://seven_dof_arm/meshes/Linkf2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://seven_dof_arm/meshes/Linkf2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="Linkf1">
+    <kp>100</kp>
+    <kd>1</kd>
+    <mu1>0.1</mu1>
+    <mu2>0.1</mu2>
+    <maxVel>0</maxVel>
+    <minDepth>0.001</minDepth>
+    <torsional>
+      <ode>
+        <coefficent>1000</coefficent>
+        <slip>0</slip>
+      </ode>
+    </torsional>
+  </gazebo>
+  <joint
+    name="jointf2"
+    type="prismatic">
+    <origin
+      xyz="0 0.0092015 0.16431"
+      rpy="-1.553 -0.19632 3.1381" />
+    <parent
+      link="Link6" />
+    <child
+      link="Linkf2" />
+    <axis
+      xyz="0.98079 0.19509 0" />
+    <limit
+      lower="0.01"
+      upper="0.023"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <ros2_control name="GazeboSystem" type="system">
+    <hardware>
+      <plugin>gazebo_ros2_control/GazeboSystem</plugin>
+    </hardware>
+      <joint name="joint1">
+        <command_interface name="position"/>
+        <state_interface name="position">
+          <param name="initial_value">0.0</param>
+        </state_interface>
+        <state_interface name="velocity"/>
+        </joint>
+      <joint name="joint2"> 
+        <command_interface name="position"/>
+        <state_interface name="position">
+          <param name="initial_value">0.0</param>
+        </state_interface>
+        <state_interface name="velocity"/>
+        </joint>
+      <joint name="joint3">
+        <command_interface name="position"/>
+        <state_interface name="position">
+          <param name="initial_value">0.0</param>
+        </state_interface>
+        <state_interface name="velocity"/>
+        </joint>
+      <joint name="joint4">
+        <command_interface name="position"/>
+        <state_interface name="position">
+          <param name="initial_value">0.0</param>
+        </state_interface>
+        <state_interface name="velocity"/>
+        </joint>
+      <joint name="join5">
+        <command_interface name="position"/>
+        <state_interface name="position">
+          <param name="initial_value">0.0</param>
+        </state_interface>
+        <state_interface name="velocity"/>
+        </joint>
+      <joint name="joint6">
+        <command_interface name="position"/>
+        <state_interface name="position">
+          <param name="initial_value">0.0</param>
+        </state_interface>
+        <state_interface name="velocity"/>
+        </joint>
+      <joint name="jointf1">
+        <command_interface name="position"/>
+        <state_interface name="position">
+          <param name="initial_value">0.0</param>
+        </state_interface>
+        </joint>
+      <joint name="jointf2">
+        <param name="mimic">jointf1</param>
+        <param name="multiplier">-1</param>
+        <command_interface name="position"/>
+        <state_interface name="position">
+          <param name="initial_value">0.0</param>
+        </state_interface>
+        <state_interface name="velocity"/>
+        </joint>
+  </ros2_control>
+  <gazebo>
+      <plugin name="gazebo_ros2_control" filename="libgazebo_ros2_control.so">
+        <parameters>$(find seven_dof_arm)/config/arm_controllers.yaml</parameters>
+      </plugin>
+  </gazebo>
+</robot>
