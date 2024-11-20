@@ -179,11 +179,11 @@ void loop() {
   if (Serial.available() > 0) {
     char command = Serial.read();
     if (command == 'M') { // Command to move joints
-      float newAngle1 = Serial.parseFloat();
+      float newAngle1 = -Serial.parseFloat();
       float newAngle2 = Serial.parseFloat();
-      float newAngle3 = Serial.parseFloat();
+      float newAngle3 = -Serial.parseFloat();
       float newAngle4 = Serial.parseFloat();
-      float newAngle5 = Serial.parseFloat();
+      float newAngle5 = -Serial.parseFloat();
       float newLinearDistance = Serial.parseFloat();
 
       // Calculate relative movements
